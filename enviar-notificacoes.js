@@ -6,7 +6,7 @@
  *   SERVICE_ACCOUNT    -> conteúdo JSON da chave de serviço do Firebase
  *   APP_EMAIL          -> e-mail de login do app (para achar o usuário)
  *   JANELA_DIAS        -> (opcional) quantos dias à frente contam como "vencendo em breve".
- *                         Padrão: "5" (vence em até 5 dias). As que vencem hoje têm seção própria.
+ *                         Padrão: "5". As que vencem hoje têm seção própria.
  */
 
 const admin = require('firebase-admin');
@@ -115,24 +115,37 @@ async function main() {
   const anoKey = String(ano);
   const mesNome = MESES[mesIndex];
 
-  // Carrega despesas do mês atual
-  const despesasAtual = database?.[anoKey]?.monthlyDetails?.[mesNome]?.expenses || [];
-
-  // Carrega despesas do mês anterior (contas cadastradas no mês passado mas pagas este mês)
+  // Mês de competência baseado no status de pagamento:
+  // → Se o mês anterior ainda tem despesas NÃO pagas: fica no mês anterior
+  // → Se todas as despesas do mês anterior estão pagas: vira o mês atual
   const mesPrevIdx = mesIndex === 0 ? 11 : mesIndex - 1;
   const anoPrevKey = mesIndex === 0 ? String(ano - 1) : anoKey;
   const mesNomePrev = MESES[mesPrevIdx];
-  const despesasPrev = database?.[anoPrevKey]?.monthlyDetails?.[mesNomePrev]?.expenses || [];
 
-  // Mescla os dois meses, deduplica por (nome + vencimento) para não contar duas vezes
-  // despesas do mês atual têm prioridade (caso a mesma conta apareça nos dois meses)
+  const despesasMesPrev = database?.[anoPrevKey]?.monthlyDetails?.[mesNomePrev]?.expenses || [];
+  const prevTemNaoPagas = despesasMesPrev.some(e => !e.paid);
+
+  const usaMesAnterior = prevTemNaoPagas;
+  const mesComp = usaMesAnterior ? mesNomePrev : mesNome;
+  const anoComp = usaMesAnterior ? anoPrevKey : anoKey;
+  const mesOpostoNome = usaMesAnterior ? mesNome : mesNomePrev;
+  const anoOposto = usaMesAnterior ? anoKey : anoPrevKey;
+
+  console.log(`Mês anterior (${mesNomePrev}): ${despesasMesPrev.filter(e => !e.paid).length} não pagas — Competência: ${mesComp}/${anoComp}`);
+
+  // Despesas do mês de competência (primário: vencimentos + orçamento)
+  const despesasComp = database?.[anoComp]?.monthlyDetails?.[mesComp]?.expenses || [];
+  // Despesas do mês oposto (secundário: captura pendências dos dois lados)
+  const despesasOposto = database?.[anoOposto]?.monthlyDetails?.[mesOpostoNome]?.expenses || [];
+
+  // Mescla deduplicando — competência tem prioridade
   const seen = new Set();
   const despesas = [];
-  for (const e of [...despesasAtual, ...despesasPrev]) {
+  for (const e of [...despesasComp, ...despesasOposto]) {
     const key = `${(e.name || '').toLowerCase().trim()}__${e.due}`;
     if (!seen.has(key)) { seen.add(key); despesas.push(e); }
   }
-  console.log(`Despesas carregadas: ${despesasAtual.length} de ${mesNome} + ${despesasPrev.length} de ${mesNomePrev} = ${despesas.length} (após dedup)`);
+  console.log(`Despesas: ${despesasComp.length} de ${mesComp} + ${despesasOposto.length} de ${mesOpostoNome} = ${despesas.length} (após dedup)`);
 
   const emBreve = [];
   const hoje = [];
@@ -158,7 +171,7 @@ async function main() {
   }
 
   // ===== Página 1: DESPESAS =====
-  let msgDespesas = `🔔 *Lembrete de contas* — ${mesNome}/${ano}\n`;
+  let msgDespesas = `🔔 *Lembrete de contas* — ${mesComp}/${anoComp}\n`;
 
   if (emBreve.length) {
     msgDespesas += `\n*Vencendo em breve:*\n`;
@@ -196,21 +209,21 @@ async function main() {
   if (pagas.length) msgDespesas += `\n*Total pago:* ${moeda(totalPago)}`;
   msgDespesas += `\n\n_Controle Financeiro PRO_`;
 
-  // ===== Página 2: ORÇAMENTOS =====
-  const budgets = database?.[anoKey]?.budgets || [];
-  const categorias = database?.[anoKey]?.expenseCategories || [];
+  // ===== Página 2: ORÇAMENTOS (usa mês de competência) =====
+  const budgets = database?.[anoComp]?.budgets || [];
+  const categorias = database?.[anoComp]?.expenseCategories || [];
   const nomeCat = (id) => ((categorias.find((c) => c.id === id) || {}).name) || 'Categoria';
-  const LIMITE_APERTADO = 80; // a partir de 80% do limite, consideramos "apertado"
+  const LIMITE_APERTADO = 80;
 
-  let msgOrcamentos = `📊 *Orçamentos do mês* — ${mesNome}/${ano}`;
+  let msgOrcamentos = `📊 *Orçamentos do mês* — ${mesComp}/${anoComp}`;
   if (budgets.length === 0) {
     msgOrcamentos += `\n\n_Nenhum orçamento cadastrado._`;
   } else {
     const dentro = [], apertado = [], estourado = [];
     for (const b of budgets) {
       if (!b.limit || b.limit <= 0) continue;
-      // Orçamento usa só o mês atual (competência): despesas de junho contam em junho, não em julho
-      const gasto = despesasAtual.filter((e) => e.categoryId === b.categoryId).reduce((s, e) => s + (e.value || 0), 0);
+      // Orçamento usa só o mês de competência (não mescla meses)
+      const gasto = despesasComp.filter((e) => e.categoryId === b.categoryId).reduce((s, e) => s + (e.value || 0), 0);
       const pct = Math.round((gasto / b.limit) * 100);
       const item = { nome: nomeCat(b.categoryId), gasto, limit: b.limit, pct };
       if (gasto > b.limit) estourado.push(item);

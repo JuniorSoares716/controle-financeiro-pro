@@ -33,5 +33,8 @@ jobs:
         env:
           SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
           APP_EMAIL: ${{ secrets.APP_EMAIL }}
+          GREENAPI_URL: ${{ secrets.GREENAPI_URL }}
+          GREENAPI_ID_INSTANCE: ${{ secrets.GREENAPI_ID_INSTANCE }}
+          GREENAPI_TOKEN_INSTANCE: ${{ secrets.GREENAPI_TOKEN_INSTANCE }}
           JANELA_DIAS: '5'
           MODO_TESTE: ${{ inputs.modo_teste }}

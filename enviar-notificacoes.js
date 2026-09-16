@@ -1,12 +1,19 @@
 /**
- * Envia avisos de contas a vencer pelo WhatsApp (CallMeBot).
+ * Envia avisos de contas a vencer pelo WhatsApp (Green API).
  * Roda pelo GitHub Actions (agendado). Lê os dados do Firestore com uma chave de serviço.
  *
+ * Como funciona o Green API: diferente do CallMeBot, aqui é UMA conta de WhatsApp sua
+ * (conectada por QR Code) que envia mensagens para os números que você cadastrar no app.
+ * Os destinatários não precisam ativar nada — só precisam ter o número cadastrado.
+ *
  * Variáveis de ambiente (definidas como "secrets" no GitHub):
- *   SERVICE_ACCOUNT    -> conteúdo JSON da chave de serviço do Firebase
- *   APP_EMAIL          -> e-mail de login do app (para achar o usuário)
- *   JANELA_DIAS        -> (opcional) quantos dias à frente contam como "vencendo em breve".
- *                         Padrão: "5". As que vencem hoje têm seção própria.
+ *   SERVICE_ACCOUNT       -> conteúdo JSON da chave de serviço do Firebase
+ *   APP_EMAIL             -> e-mail de login do app (para achar o usuário)
+ *   GREENAPI_URL           -> apiUrl mostrado no console do Green API (ex.: https://7105.api.greenapi.com)
+ *   GREENAPI_ID_INSTANCE   -> idInstance do seu instance no Green API
+ *   GREENAPI_TOKEN_INSTANCE-> apiTokenInstance do seu instance no Green API
+ *   JANELA_DIAS            -> (opcional) quantos dias à frente contam como "vencendo em breve".
+ *                             Padrão: "5". As que vencem hoje têm seção própria.
  */
 
 const admin = require('firebase-admin');
@@ -34,22 +41,22 @@ function fmtDueMsg(e) {
   return '?';
 }
 
-// Divide uma mensagem longa em partes seguras (mede o tamanho CODIFICADO, que é o que conta na URL do CallMeBot)
-function dividirMensagem(texto, maxEnc = 1400) {
-  const enc = (s) => encodeURIComponent(s).length;
+// Divide uma mensagem muito longa em partes (o Green API aceita até 20.000 caracteres por mensagem,
+// então isso só entra em ação em casos extremos — é mais uma rede de segurança que uma necessidade)
+function dividirMensagem(texto, maxLen = 15000) {
   const partes = [];
   let atual = '';
   const push = () => { if (atual) { partes.push(atual); atual = ''; } };
   for (const bloco of texto.split('\n\n')) {
-    if (enc(bloco) > maxEnc) {
+    if (bloco.length > maxLen) {
       push();
       let sub = '';
       for (const linha of bloco.split('\n')) {
-        if (sub && enc(sub + '\n' + linha) > maxEnc) { partes.push(sub); sub = linha; }
+        if (sub && (sub + '\n' + linha).length > maxLen) { partes.push(sub); sub = linha; }
         else sub = sub ? sub + '\n' + linha : linha;
       }
       if (sub) atual = sub;
-    } else if (atual && enc(atual + '\n\n' + bloco) > maxEnc) {
+    } else if (atual && (atual + '\n\n' + bloco).length > maxLen) {
       push(); atual = bloco;
     } else {
       atual = atual ? atual + '\n\n' + bloco : bloco;
@@ -65,17 +72,30 @@ function hojeSaoPaulo() {
   return { ano: get({ year: 'numeric' }), mesIndex: get({ month: 'numeric' }) - 1, dia: get({ day: 'numeric' }) };
 }
 
-async function enviarCallMeBot(number, apikey, text) {
-  const url = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(number)}`
-    + `&apikey=${encodeURIComponent(apikey)}&text=${encodeURIComponent(text)}`;
-  const resp = await fetch(url, { method: 'GET' });
+// Formata um número de telefone brasileiro (com ou sem +, espaços, etc.) para o formato de chatId do Green API
+function paraChatId(numero) {
+  const digitos = String(numero).replace(/\D/g, '');
+  return `${digitos}@c.us`;
+}
+
+async function enviarGreenAPI(numero, texto) {
+  const { GREENAPI_URL, GREENAPI_ID_INSTANCE, GREENAPI_TOKEN_INSTANCE } = process.env;
+  const url = `${GREENAPI_URL}/waInstance${GREENAPI_ID_INSTANCE}/sendMessage/${GREENAPI_TOKEN_INSTANCE}`;
+  const resp = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chatId: paraChatId(numero), message: texto }),
+  });
   const body = await resp.text();
-  return { ok: resp.ok, status: resp.status, body: body.slice(0, 200) };
+  return { ok: resp.ok, status: resp.status, body: body.slice(0, 300) };
 }
 
 async function main() {
   if (!process.env.SERVICE_ACCOUNT) throw new Error('Falta o secret SERVICE_ACCOUNT.');
   if (!process.env.APP_EMAIL) throw new Error('Falta o secret APP_EMAIL.');
+  if (!process.env.GREENAPI_URL) throw new Error('Falta o secret GREENAPI_URL.');
+  if (!process.env.GREENAPI_ID_INSTANCE) throw new Error('Falta o secret GREENAPI_ID_INSTANCE.');
+  if (!process.env.GREENAPI_TOKEN_INSTANCE) throw new Error('Falta o secret GREENAPI_TOKEN_INSTANCE.');
 
   admin.initializeApp({ credential: admin.credential.cert(JSON.parse(process.env.SERVICE_ACCOUNT)) });
 
@@ -85,20 +105,20 @@ async function main() {
   const database = snap.data();
 
   const cfg = database.appSettings || database['__settings__'] || {};
-  const contatos = (cfg.whatsappContacts || []).filter((c) => c.number && c.apikey);
+  const contatos = (cfg.whatsappContacts || []).filter((c) => c.number);
 
   // MODO TESTE: envia uma mensagem de verificação e encerra (ignora vencimentos)
   if (process.env.MODO_TESTE === 'true' || process.env.MODO_TESTE === '1') {
-    if (contatos.length === 0) { console.log('TESTE: nenhum contato com número + apikey cadastrado.'); return; }
+    if (contatos.length === 0) { console.log('TESTE: nenhum contato com número cadastrado.'); return; }
     const teste = '✅ *Teste — Controle Financeiro PRO*\n\nSe você recebeu esta mensagem, as notificações de WhatsApp estão funcionando! 🎉';
     for (const c of contatos) {
       try {
-        const r = await enviarCallMeBot(c.number, c.apikey, teste);
+        const r = await enviarGreenAPI(c.number, teste);
         console.log(`TESTE enviado para ${c.name} (${c.number}): status ${r.status} | resposta: ${r.body}`);
       } catch (err) {
         console.error(`TESTE falhou para ${c.name}:`, err.message);
       }
-      await sleep(4000);
+      await sleep(2000);
     }
     console.log('TESTE concluído.');
     return;
@@ -142,7 +162,7 @@ async function main() {
   const seen = new Set();
   const despesas = [];
   for (const e of [...despesasComp, ...despesasOposto]) {
-    const key = `${(e.name || '').toLowerCase().trim()}__${e.due}`;
+    const key = `${(e.name || '').toLowerCase().trim()}__${e.dueDate || e.due}`;
     if (!seen.has(key)) { seen.add(key); despesas.push(e); }
   }
   console.log(`Despesas: ${despesasComp.length} de ${mesComp} + ${despesasOposto.length} de ${mesOpostoNome} = ${despesas.length} (após dedup)`);
@@ -239,22 +259,22 @@ async function main() {
   }
   msgOrcamentos += `\n\n_Controle Financeiro PRO_`;
 
-  if (contatos.length === 0) { console.log('Nenhum contato com número + apikey. Nada enviado.'); return; }
+  if (contatos.length === 0) { console.log('Nenhum contato com número cadastrado. Nada enviado.'); return; }
 
-  // Página 1 = despesas, Página 2 = orçamentos (cada página é subdividida só se passar do limite da URL)
+  // Página 1 = despesas, Página 2 = orçamentos (cada página só é subdividida em casos extremos)
   let partes = [];
-  for (const pagina of [msgDespesas, msgOrcamentos]) partes = partes.concat(dividirMensagem(pagina, 1400));
+  for (const pagina of [msgDespesas, msgOrcamentos]) partes = partes.concat(dividirMensagem(pagina));
 
   for (const c of contatos) {
     for (let i = 0; i < partes.length; i++) {
       const texto = partes.length > 1 ? `(${i + 1}/${partes.length})\n${partes[i]}` : partes[i];
       try {
-        const r = await enviarCallMeBot(c.number, c.apikey, texto);
-        console.log(`Enviado para ${c.name} (${c.number}) parte ${i + 1}/${partes.length}: status ${r.status}`);
+        const r = await enviarGreenAPI(c.number, texto);
+        console.log(`Enviado para ${c.name} (${c.number}) parte ${i + 1}/${partes.length}: status ${r.status} | ${r.body}`);
       } catch (err) {
         console.error(`Falha ao enviar para ${c.name} (parte ${i + 1}):`, err.message);
       }
-      await sleep(4000); // respeita o limite do CallMeBot
+      await sleep(2000); // pequeno intervalo entre envios
     }
   }
   console.log('Concluído.');

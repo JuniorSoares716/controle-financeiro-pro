@@ -31,6 +31,65 @@ const JANELA_DIAS = parseInt(process.env.JANELA_DIAS || '5', 10);
 const moeda = (v) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v || 0);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/* ============================================================
+   PARTE DE TERCEIROS (espelho de index.html, RN-TER-02)
+
+   ATENÇÃO: esta lógica existe em dois lugares. O app é um arquivo único sem build,
+   e este serviço roda em Node — não há como compartilhar módulo entre os dois sem
+   quebrar uma das duas restrições. Ao mexer em custoProprio aqui, mexa também no
+   index.html, e vice-versa. Os cenários de teste cobrem os dois lados.
+
+   Só o consumo de ORÇAMENTO usa o custo próprio: ele mede quanto VOCÊ gastou.
+   Os avisos de vencimento e o total pago continuam com o valor cheio da fatura,
+   porque é esse o dinheiro que sai da sua conta. (RN-TER-26)
+   ============================================================ */
+const posMes = (year, month) => parseInt(year, 10) * 12 + MESES.indexOf(month);
+
+// Parcelas de um parcelamento, mês a mês, atravessando o ano
+/* Espelha planInstallments do app (RN-ASS-02). A duplicação é imposta pela separação
+   app/serviço; o que muda aqui é só o alcance da assinatura: o serviço olha um mês de
+   cada vez, então basta cobrir do início até o mês perguntado, sem horizonte nenhum. */
+function parcelasDoPlano(plan, ateIdx = null) {
+  const base = posMes(plan.firstYear, plan.firstMonth);
+  if (isNaN(base)) return [];
+  const assinatura = !!plan.recorrente;
+  const total = assinatura ? 0 : (parseInt(plan.totalInstallments, 10) || 0);
+  let ultimo;
+  if (assinatura) {
+    const fim = (plan.endMonth && MESES.indexOf(plan.endMonth) >= 0 && plan.endYear)
+      ? posMes(plan.endYear, plan.endMonth) : null;
+    const alvo = ateIdx === null ? base : Math.max(base, ateIdx);
+    ultimo = fim === null ? alvo : Math.min(fim, alvo);
+  } else {
+    if (!total) return [];
+    ultimo = base + total - 1;
+  }
+  const itens = [];
+  for (let idx = base, n = 1; idx <= ultimo; idx++, n++) {
+    itens.push({ n, total, assinatura, year: String(Math.floor(idx / 12)), month: MESES[idx % 12],
+      value: plan.installmentValue || 0, plan });
+  }
+  return itens;
+}
+
+// Quanto daquele cartão, naquele mês, é compra de outra pessoa
+function terceirosDoMes(database, cardId, year, month) {
+  const planos = database?.appSettings?.installmentPlans || [];
+  return planos
+    .filter((p) => p.cardId === cardId && p.personId)
+    // assinatura: gera só até o mês perguntado, que é tudo de que esta soma precisa
+    .flatMap((p) => parcelasDoPlano(p, posMes(year, month)))
+    .filter((i) => i.year === String(year) && i.month === month)
+    .reduce((s, i) => s + i.value, 0);
+}
+
+// Custo que é de fato seu: a fatura cheia menos a parte de terceiros. Piso em zero.
+function custoProprio(database, despesa, year, month) {
+  const total = despesa?.value || 0;
+  if (!despesa?.cardId) return total;
+  return Math.max(0, total - terceirosDoMes(database, despesa.cardId, year, month));
+}
+
 // Retorna diferença em dias entre o vencimento da despesa e hoje (negativo = vencida, 0 = hoje, positivo = futuro)
 // Usa dueDate (data completa) quando disponível; cai no due (dia do mês) para dados antigos
 function getDueDiffDays(e, hoje) {
@@ -360,8 +419,10 @@ async function main() {
     const dentro = [], apertado = [], estourado = [];
     for (const b of budgets) {
       if (!b.limit || b.limit <= 0) continue;
-      // Orçamento usa só o mês de competência (não mescla meses)
-      const gasto = despesasComp.filter((e) => e.categoryId === b.categoryId).reduce((s, e) => s + (e.value || 0), 0);
+      // Orçamento usa só o mês de competência (não mescla meses) e só o SEU custo:
+      // compra de terceiro no seu cartão não pode estourar a sua categoria (RN-TER-26)
+      const gasto = despesasComp.filter((e) => e.categoryId === b.categoryId)
+        .reduce((s, e) => s + custoProprio(database, e, anoComp, mesComp), 0);
       const pct = Math.round((gasto / b.limit) * 100);
       const item = { nome: nomeCat(b.categoryId), gasto, limit: b.limit, pct };
       if (gasto > b.limit) estourado.push(item);
@@ -374,6 +435,11 @@ async function main() {
     msgOrcamentos += bloco('Dentro da margem', dentro, linhaOk);
     msgOrcamentos += bloco('Apertado (perto do limite)', apertado, linhaOk);
     msgOrcamentos += bloco('Estourado', estourado, linhaEstourou);
+    // Explica a diferença entre o que o cartão cobra e o que entrou na conta acima
+    const terceirosNoMes = despesasComp.reduce((s, e) => s + ((e.value || 0) - custoProprio(database, e, anoComp, mesComp)), 0);
+    if (terceirosNoMes > 0) {
+      msgOrcamentos += `\n\n_${moeda(terceirosNoMes)} em compras de terceiros ficaram de fora destes números: a fatura cobra o valor cheio, mas o gasto não é seu._`;
+    }
   }
   msgOrcamentos += `\n\n_Controle Financeiro PRO_`;
 
@@ -403,4 +469,5 @@ if (require.main === module) {
   main().catch((err) => { console.error('Erro:', err.message); process.exit(1); });
 }
 
-module.exports = { resumoDoMes, avaliarMesesQuitados, montarMensagemQuitado };
+module.exports = { resumoDoMes, avaliarMesesQuitados, montarMensagemQuitado,
+                   parcelasDoPlano, terceirosDoMes, custoProprio };

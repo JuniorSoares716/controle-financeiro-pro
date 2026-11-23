@@ -1,0 +1,13 @@
+# NUNCA versionar credenciais
+*serviceAccount*.json
+*firebase-adminsdk*.json
+.env
+
+# Backups dos seus dados reais (o dado de teste é testes/dados-demo.json)
+backup*.json
+
+# Gerados
+node_modules/
+.firebase/
+testes/.tmp/
+testes/alvo.mjs

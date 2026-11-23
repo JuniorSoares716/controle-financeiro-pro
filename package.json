@@ -1,0 +1,21 @@
+{
+  "name": "controle-financeiro-pro",
+  "version": "2.5.2",
+  "private": true,
+  "description": "Controle Financeiro PRO — sistema em arquivo único, com testes automatizados",
+  "scripts": {
+    "sintaxe": "node testes/sintaxe.mjs",
+    "preparar": "node testes/extrair.mjs && node testes/preparar.mjs && npm run css",
+    "css": "tailwindcss -c testes/tailwind.config.cjs -i testes/in.css -o testes/.tmp/tw.css --minify",
+    "test:logica": "node testes/extrair.mjs && node testes/rodar.mjs logica",
+    "test:navegador": "npm run preparar && node testes/rodar.mjs navegador",
+    "test": "npm run sintaxe && npm run test:logica && npm run test:navegador"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "^5.1.0",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "chart.js": "^4.4.7",
+    "playwright": "1.63.0",
+    "tailwindcss": "^3.4.17"
+  }
+}

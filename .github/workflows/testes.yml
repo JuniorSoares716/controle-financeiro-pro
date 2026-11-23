@@ -1,0 +1,81 @@
+name: Testes
+
+# Roda a cada envio de código e em cada pull request. É a rede que impede um
+# arquivo quebrado de chegar ao Firebase Hosting.
+# As duas branches estão listadas de propósito: repositórios criados antes de
+# 2020 usam "master" e os novos usam "main". Com só uma delas, o push na outra
+# não dispara nada — sem erro e sem aviso.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  rapido:
+    name: Sintaxe e lógica
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar o Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      # Segundos. Pega JavaScript inválido, <div> sem fechar e, o mais importante,
+      # o index-teste-local.html que ficou diferente do index.html.
+      - name: Sintaxe e paridade
+        run: npm run sintaxe
+
+      # 181 cenários sobre as funções extraídas do próprio index.html.
+      - name: Regras de negócio
+        run: npm run test:logica
+
+  navegador:
+    name: Navegador
+    needs: rapido          # não gasta 6 minutos se a sintaxe já falhou
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar o Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Reaproveitar o navegador já baixado
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Instalar o Chromium
+        run: npx playwright install --with-deps chromium
+
+      # 338 verificações na tela: cliques, modais, layout no celular, cores.
+      - name: Testes de navegador
+        run: npm run test:navegador
+
+      # As capturas ficam anexadas à execução. Quando um teste de layout falha,
+      # a imagem diz em um segundo o que o log levaria dez minutos para explicar.
+      - name: Guardar as capturas de tela
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capturas-de-tela
+          path: testes/.tmp/shots/
+          retention-days: 7
+          if-no-files-found: ignore

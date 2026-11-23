@@ -1,0 +1,2207 @@
+{
+ "2026": {
+  "summary": [
+   {
+    "month": "Janeiro",
+    "income": 6500,
+    "expenses": 4623.97
+   },
+   {
+    "month": "Fevereiro",
+    "income": 6500,
+    "expenses": 4444.28
+   },
+   {
+    "month": "Março",
+    "income": 7803.97,
+    "expenses": 5243.75
+   },
+   {
+    "month": "Abril",
+    "income": 6500,
+    "expenses": 5037.31
+   },
+   {
+    "month": "Maio",
+    "income": 6500,
+    "expenses": 5423.07
+   },
+   {
+    "month": "Junho",
+    "income": 6500,
+    "expenses": 5059.68
+   },
+   {
+    "month": "Julho",
+    "income": 7956.07,
+    "expenses": 5467.11
+   },
+   {
+    "month": "Agosto",
+    "income": 6500,
+    "expenses": 5751.94
+   },
+   {
+    "month": "Setembro",
+    "income": 6500,
+    "expenses": 5608.2
+   },
+   {
+    "month": "Outubro",
+    "income": 6500,
+    "expenses": 5632.09
+   },
+   {
+    "month": "Novembro",
+    "income": 6500,
+    "expenses": 2349.9
+   },
+   {
+    "month": "Dezembro",
+    "income": 6500,
+    "expenses": 2349.9
+   }
+  ],
+  "expenseCategories": [
+   {
+    "id": "cat1",
+    "name": "Faturas de Cartão",
+    "icon": "credit-card"
+   },
+   {
+    "id": "cat2",
+    "name": "Contas da Casa",
+    "icon": "house"
+   },
+   {
+    "id": "cat3",
+    "name": "Mercado",
+    "icon": "cart-shopping"
+   },
+   {
+    "id": "cat4",
+    "name": "Transporte",
+    "icon": "car"
+   },
+   {
+    "id": "cat5",
+    "name": "Saúde",
+    "icon": "heart"
+   },
+   {
+    "id": "cat6",
+    "name": "Lazer",
+    "icon": "futbol"
+   }
+  ],
+  "monthlyDetails": {
+   "Janeiro": {
+    "expenses": [
+     {
+      "id": "exp_demo1",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-01-05",
+      "dueDate": "2026-01-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo2",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-01-05",
+      "dueDate": "2026-01-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo3",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 190.76,
+      "date": "2026-01-05",
+      "dueDate": "2026-01-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo4",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 85.43,
+      "date": "2026-01-05",
+      "dueDate": "2026-01-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo5",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 1033.68,
+      "date": "2026-01-05",
+      "dueDate": "2026-01-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo6",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 297.24,
+      "date": "2026-01-05",
+      "dueDate": "2026-01-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo7",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 940.76,
+      "date": "2026-01-05",
+      "dueDate": "2026-02-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo8",
+      "categoryId": "cat6",
+      "name": "Streaming e lazer",
+      "value": 146.2,
+      "date": "2026-01-05",
+      "dueDate": "2026-01-08",
+      "due": 8,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     }
+    ]
+   },
+   "Fevereiro": {
+    "expenses": [
+     {
+      "id": "exp_demo10",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-02-06",
+      "dueDate": "2026-02-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo11",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-02-06",
+      "dueDate": "2026-02-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo12",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 165.51,
+      "date": "2026-02-06",
+      "dueDate": "2026-02-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo13",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 98.27,
+      "date": "2026-02-06",
+      "dueDate": "2026-02-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo14",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 935.12,
+      "date": "2026-02-06",
+      "dueDate": "2026-02-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo15",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 341.36,
+      "date": "2026-02-06",
+      "dueDate": "2026-02-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo16",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 845.96,
+      "date": "2026-02-06",
+      "dueDate": "2026-03-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo17",
+      "categoryId": "cat5",
+      "name": "Farmácia",
+      "value": 128.16,
+      "date": "2026-02-06",
+      "dueDate": "2026-02-22",
+      "due": 22,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     }
+    ]
+   },
+   "Março": {
+    "expenses": [
+     {
+      "id": "exp_demo19",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-03-07",
+      "dueDate": "2026-03-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo20",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-03-07",
+      "dueDate": "2026-03-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo21",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 200.33,
+      "date": "2026-03-07",
+      "dueDate": "2026-03-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo22",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 109.77,
+      "date": "2026-03-07",
+      "dueDate": "2026-03-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo23",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 969.52,
+      "date": "2026-03-07",
+      "dueDate": "2026-03-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo24",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 328.32,
+      "date": "2026-03-07",
+      "dueDate": "2026-03-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo25",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 1058.23,
+      "date": "2026-03-07",
+      "dueDate": "2026-04-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo26",
+      "categoryId": "cat6",
+      "name": "Streaming e lazer",
+      "value": 227.68,
+      "date": "2026-03-07",
+      "dueDate": "2026-03-08",
+      "due": 8,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo27",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-03-07",
+      "dueDate": "2026-04-12",
+      "due": 12,
+      "paid": true,
+      "isInstallment": true,
+      "currentInstallment": 1,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Abril": {
+    "expenses": [
+     {
+      "id": "exp_demo30",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-04-08",
+      "dueDate": "2026-04-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo31",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-04-08",
+      "dueDate": "2026-04-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo32",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 197.68,
+      "date": "2026-04-08",
+      "dueDate": "2026-04-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo33",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 115.15,
+      "date": "2026-04-08",
+      "dueDate": "2026-04-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo34",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 972.85,
+      "date": "2026-04-08",
+      "dueDate": "2026-04-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo35",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 399.85,
+      "date": "2026-04-08",
+      "dueDate": "2026-04-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo36",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 1001.88,
+      "date": "2026-04-08",
+      "dueDate": "2026-05-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo37",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-04-08",
+      "dueDate": "2026-05-12",
+      "due": 12,
+      "paid": true,
+      "isInstallment": true,
+      "currentInstallment": 2,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Maio": {
+    "expenses": [
+     {
+      "id": "exp_demo39",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-05-09",
+      "dueDate": "2026-05-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo40",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-05-09",
+      "dueDate": "2026-05-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo41",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 173.7,
+      "date": "2026-05-09",
+      "dueDate": "2026-05-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo42",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 84.24,
+      "date": "2026-05-09",
+      "dueDate": "2026-05-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo43",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 1040.61,
+      "date": "2026-05-09",
+      "dueDate": "2026-05-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo44",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 403.61,
+      "date": "2026-05-09",
+      "dueDate": "2026-05-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo45",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 1014.22,
+      "date": "2026-05-09",
+      "dueDate": "2026-06-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo46",
+      "categoryId": "cat5",
+      "name": "Farmácia",
+      "value": 172.34,
+      "date": "2026-05-09",
+      "dueDate": "2026-05-22",
+      "due": 22,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo47",
+      "categoryId": "cat6",
+      "name": "Streaming e lazer",
+      "value": 184.45,
+      "date": "2026-05-09",
+      "dueDate": "2026-05-08",
+      "due": 8,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo48",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-05-09",
+      "dueDate": "2026-06-12",
+      "due": 12,
+      "paid": true,
+      "isInstallment": true,
+      "currentInstallment": 3,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Junho": {
+    "expenses": [
+     {
+      "id": "exp_demo50",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-06-10",
+      "dueDate": "2026-06-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo51",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-06-10",
+      "dueDate": "2026-06-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo52",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 195.38,
+      "date": "2026-06-10",
+      "dueDate": "2026-06-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo53",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 99.72,
+      "date": "2026-06-10",
+      "dueDate": "2026-06-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo54",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 1011.93,
+      "date": "2026-06-10",
+      "dueDate": "2026-06-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo55",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 335.96,
+      "date": "2026-06-10",
+      "dueDate": "2026-06-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo56",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 1066.79,
+      "date": "2026-06-10",
+      "dueDate": "2026-07-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo57",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-06-10",
+      "dueDate": "2026-07-12",
+      "due": 12,
+      "paid": true,
+      "isInstallment": true,
+      "currentInstallment": 4,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Julho": {
+    "expenses": [
+     {
+      "id": "exp_demo59",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-07-11",
+      "dueDate": "2026-07-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo60",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-07-11",
+      "dueDate": "2026-07-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo61",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 224.64,
+      "date": "2026-07-11",
+      "dueDate": "2026-07-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo62",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 95.39,
+      "date": "2026-07-11",
+      "dueDate": "2026-07-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo63",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 1077.69,
+      "date": "2026-07-11",
+      "dueDate": "2026-07-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo64",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 396.56,
+      "date": "2026-07-11",
+      "dueDate": "2026-07-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo65",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 1185.96,
+      "date": "2026-07-11",
+      "dueDate": "2026-08-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo66",
+      "categoryId": "cat6",
+      "name": "Streaming e lazer",
+      "value": 136.97,
+      "date": "2026-07-11",
+      "dueDate": "2026-07-08",
+      "due": 8,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo67",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-07-11",
+      "dueDate": "2026-08-12",
+      "due": 12,
+      "paid": true,
+      "isInstallment": true,
+      "currentInstallment": 5,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Agosto": {
+    "expenses": [
+     {
+      "id": "exp_demo70",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-08-12",
+      "dueDate": "2026-08-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo71",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-08-12",
+      "dueDate": "2026-08-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo72",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 226.4,
+      "date": "2026-08-12",
+      "dueDate": "2026-08-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo73",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 88.79,
+      "date": "2026-08-12",
+      "dueDate": "2026-08-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo74",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 1145.14,
+      "date": "2026-08-12",
+      "dueDate": "2026-08-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo75",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 398.52,
+      "date": "2026-08-12",
+      "dueDate": "2026-08-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo76",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 1357.54,
+      "date": "2026-08-12",
+      "dueDate": "2026-09-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo77",
+      "categoryId": "cat5",
+      "name": "Farmácia",
+      "value": 185.65,
+      "date": "2026-08-12",
+      "dueDate": "2026-08-22",
+      "due": 22,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo78",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-08-12",
+      "dueDate": "2026-09-12",
+      "due": 12,
+      "paid": true,
+      "isInstallment": true,
+      "currentInstallment": 6,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Setembro": {
+    "expenses": [
+     {
+      "id": "exp_demo80",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-09-13",
+      "dueDate": "2026-09-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo81",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-09-13",
+      "dueDate": "2026-09-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo82",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 187.35,
+      "date": "2026-09-13",
+      "dueDate": "2026-09-15",
+      "due": 15,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo83",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 115.29,
+      "date": "2026-09-13",
+      "dueDate": "2026-09-18",
+      "due": 18,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo84",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 1076.43,
+      "date": "2026-09-13",
+      "dueDate": "2026-09-28",
+      "due": 28,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo85",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 395.81,
+      "date": "2026-09-13",
+      "dueDate": "2026-09-25",
+      "due": 25,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo86",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 1367.14,
+      "date": "2026-09-13",
+      "dueDate": "2026-10-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo87",
+      "categoryId": "cat6",
+      "name": "Streaming e lazer",
+      "value": 116.28,
+      "date": "2026-09-13",
+      "dueDate": "2026-09-08",
+      "due": 8,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo88",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-09-13",
+      "dueDate": "2026-10-12",
+      "due": 12,
+      "paid": true,
+      "isInstallment": true,
+      "currentInstallment": 7,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Outubro": {
+    "expenses": [
+     {
+      "id": "exp_demo90",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-10-14",
+      "dueDate": "2026-10-10",
+      "due": 10,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo91",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-10-14",
+      "dueDate": "2026-10-20",
+      "due": 20,
+      "paid": true,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo92",
+      "categoryId": "cat2",
+      "name": "Energia",
+      "value": 206.45,
+      "date": "2026-10-14",
+      "dueDate": "2026-10-22",
+      "due": 22,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo93",
+      "categoryId": "cat2",
+      "name": "Água",
+      "value": 81.41,
+      "date": "2026-10-14",
+      "dueDate": "2026-10-26",
+      "due": 26,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "tags": [
+       "consumo"
+      ]
+     },
+     {
+      "id": "exp_demo94",
+      "categoryId": "cat3",
+      "name": "Mercado do mês",
+      "value": 1198.96,
+      "date": "2026-10-14",
+      "dueDate": "2026-10-29",
+      "due": 29,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo95",
+      "categoryId": "cat4",
+      "name": "Combustível",
+      "value": 438.46,
+      "date": "2026-10-14",
+      "dueDate": "2026-10-25",
+      "due": 25,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": []
+     },
+     {
+      "id": "exp_demo96",
+      "categoryId": "cat1",
+      "name": "Fatura Nubank",
+      "value": 1356.91,
+      "date": "2026-10-14",
+      "dueDate": "2026-11-10",
+      "due": 10,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "cardId": "card_nubank"
+     },
+     {
+      "id": "exp_demo97",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-10-14",
+      "dueDate": "2026-11-12",
+      "due": 12,
+      "paid": false,
+      "isInstallment": true,
+      "currentInstallment": 8,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Novembro": {
+    "expenses": [
+     {
+      "id": "exp_demo99",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-11-05",
+      "dueDate": "2026-11-10",
+      "due": 10,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo100",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-11-05",
+      "dueDate": "2026-11-20",
+      "due": 20,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo101",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-11-05",
+      "dueDate": "2026-12-12",
+      "due": 12,
+      "paid": false,
+      "isInstallment": true,
+      "currentInstallment": 9,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   },
+   "Dezembro": {
+    "expenses": [
+     {
+      "id": "exp_demo103",
+      "categoryId": "cat2",
+      "name": "Aluguel",
+      "value": 1800,
+      "date": "2026-12-06",
+      "dueDate": "2026-12-10",
+      "due": 10,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec1"
+     },
+     {
+      "id": "exp_demo104",
+      "categoryId": "cat2",
+      "name": "Internet",
+      "value": 129.9,
+      "date": "2026-12-06",
+      "dueDate": "2026-12-20",
+      "due": 20,
+      "paid": false,
+      "isInstallment": false,
+      "currentInstallment": 1,
+      "totalInstallments": 2,
+      "purchases": [],
+      "recurringId": "rec2"
+     },
+     {
+      "id": "exp_demo105",
+      "categoryId": "cat1",
+      "name": "Notebook",
+      "value": 420,
+      "date": "2026-12-06",
+      "dueDate": "2027-01-12",
+      "due": 12,
+      "paid": false,
+      "isInstallment": true,
+      "currentInstallment": 10,
+      "totalInstallments": 10,
+      "purchases": []
+     }
+    ]
+   }
+  },
+  "monthlyIncomes": {
+   "Janeiro": [
+    {
+     "id": "inc_demo9",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Fevereiro": [
+    {
+     "id": "inc_demo18",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Março": [
+    {
+     "id": "inc_demo28",
+     "source": "Salário",
+     "value": 6500
+    },
+    {
+     "id": "inc_demo29",
+     "source": "Freelance",
+     "value": 1303.97
+    }
+   ],
+   "Abril": [
+    {
+     "id": "inc_demo38",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Maio": [
+    {
+     "id": "inc_demo49",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Junho": [
+    {
+     "id": "inc_demo58",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Julho": [
+    {
+     "id": "inc_demo68",
+     "source": "Salário",
+     "value": 6500
+    },
+    {
+     "id": "inc_demo69",
+     "source": "Freelance",
+     "value": 1456.07
+    }
+   ],
+   "Agosto": [
+    {
+     "id": "inc_demo79",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Setembro": [
+    {
+     "id": "inc_demo89",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Outubro": [
+    {
+     "id": "inc_demo98",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Novembro": [
+    {
+     "id": "inc_demo102",
+     "source": "Salário",
+     "value": 6500
+    }
+   ],
+   "Dezembro": [
+    {
+     "id": "inc_demo106",
+     "source": "Salário",
+     "value": 6500
+    }
+   ]
+  },
+  "monthlyInvestments": {
+   "Janeiro": [
+    {
+     "id": "inv_demo107",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 8000,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 8611.64
+    },
+    {
+     "id": "inv_demo108",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 15000,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 15108.56
+    },
+    {
+     "id": "inv_demo109",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 3000,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 3271.86
+    }
+   ],
+   "Fevereiro": [
+    {
+     "id": "inv_demo110",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 8611.64,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 9207.61
+    },
+    {
+     "id": "inv_demo111",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 15108.56,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 15258.12
+    },
+    {
+     "id": "inv_demo112",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 3271.86,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 3542.41
+    }
+   ],
+   "Março": [
+    {
+     "id": "inv_demo113",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 9207.61,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 9832.83
+    },
+    {
+     "id": "inv_demo114",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 15258.12,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 15464.82
+    },
+    {
+     "id": "inv_demo115",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 3542.41,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 3819.43
+    }
+   ],
+   "Abril": [
+    {
+     "id": "inv_demo116",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 9832.83,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 10449.27
+    },
+    {
+     "id": "inv_demo117",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 15464.82,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 15537.61
+    },
+    {
+     "id": "inv_demo118",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 3819.43,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 4111.15
+    }
+   ],
+   "Maio": [
+    {
+     "id": "inv_demo119",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 10449.27,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 11071.23
+    },
+    {
+     "id": "inv_demo120",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 15537.61,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 15755.62
+    },
+    {
+     "id": "inv_demo121",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 4111.15,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 4414.83
+    }
+   ],
+   "Junho": [
+    {
+     "id": "inv_demo122",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 11071.23,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 11660.31
+    },
+    {
+     "id": "inv_demo123",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 15755.62,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 15881.0
+    },
+    {
+     "id": "inv_demo124",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 4414.83,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 4719.4
+    }
+   ],
+   "Julho": [
+    {
+     "id": "inv_demo125",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 11660.31,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 12223.57
+    },
+    {
+     "id": "inv_demo126",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 15881.0,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 16019.43
+    },
+    {
+     "id": "inv_demo127",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 4719.4,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 5007.56
+    }
+   ],
+   "Agosto": [
+    {
+     "id": "inv_demo128",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 12223.57,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 12801.45
+    },
+    {
+     "id": "inv_demo129",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 16019.43,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 16094.55
+    },
+    {
+     "id": "inv_demo130",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 5007.56,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 5331.16
+    }
+   ],
+   "Setembro": [
+    {
+     "id": "inv_demo131",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 12801.45,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 13384.57
+    },
+    {
+     "id": "inv_demo132",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 16094.55,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 16200.39
+    },
+    {
+     "id": "inv_demo133",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 5331.16,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 5642.63
+    }
+   ],
+   "Outubro": [
+    {
+     "id": "inv_demo134",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 13384.57,
+     "added": 500,
+     "withdrawn": 0,
+     "current": 14070.81
+    },
+    {
+     "id": "inv_demo135",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 16200.39,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 16279.87
+    },
+    {
+     "id": "inv_demo136",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 5642.63,
+     "added": 200,
+     "withdrawn": 0,
+     "current": 5963.9
+    }
+   ],
+   "Novembro": [
+    {
+     "id": "inv_demo137",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 14070.81,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 14070.81
+    },
+    {
+     "id": "inv_demo138",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 16279.87,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 16279.87
+    },
+    {
+     "id": "inv_demo139",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 5963.9,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 5963.9
+    }
+   ],
+   "Dezembro": [
+    {
+     "id": "inv_demo140",
+     "seriesId": "serie1",
+     "bank": "Nubank",
+     "type": "CDB 110% CDI",
+     "assetClass": "Renda Fixa",
+     "invested": 14070.81,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 14070.81
+    },
+    {
+     "id": "inv_demo141",
+     "seriesId": "serie2",
+     "bank": "XP Investimentos",
+     "type": "Tesouro Selic",
+     "assetClass": "Renda Fixa",
+     "invested": 16279.87,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 16279.87
+    },
+    {
+     "id": "inv_demo142",
+     "seriesId": "serie3",
+     "bank": "Binance",
+     "type": "Bitcoin",
+     "assetClass": "Cripto",
+     "invested": 5963.9,
+     "added": 0,
+     "withdrawn": 0,
+     "current": 5963.9
+    }
+   ]
+  },
+  "budgets": [
+   {
+    "id": "bud1",
+    "categoryId": "cat1",
+    "limit": 1800
+   },
+   {
+    "id": "bud2",
+    "categoryId": "cat3",
+    "limit": 1200
+   },
+   {
+    "id": "bud3",
+    "categoryId": "cat4",
+    "limit": 500
+   },
+   {
+    "id": "bud4",
+    "categoryId": "cat6",
+    "limit": 250
+   }
+  ],
+  "savingsGoals": [
+   {
+    "id": "goal1",
+    "name": "Viagem ao Chile",
+    "targetAmount": 12000,
+    "currentAmount": 4800,
+    "targetDate": "2027-07-01",
+    "color": "#0D9488",
+    "icon": "plane",
+    "contributions": [
+     {
+      "date": "2026-05-05",
+      "amount": 800
+     },
+     {
+      "date": "2026-06-05",
+      "amount": 800
+     },
+     {
+      "date": "2026-07-05",
+      "amount": 800
+     },
+     {
+      "date": "2026-08-05",
+      "amount": 800
+     },
+     {
+      "date": "2026-09-05",
+      "amount": 800
+     },
+     {
+      "date": "2026-10-05",
+      "amount": 800
+     }
+    ]
+   },
+   {
+    "id": "goal2",
+    "name": "Reserva de emergência",
+    "targetAmount": 30000,
+    "currentAmount": 18500,
+    "targetDate": null,
+    "color": "#3B82F6",
+    "icon": "piggy-bank",
+    "contributions": [
+     {
+      "date": "2026-03-10",
+      "amount": 10000
+     },
+     {
+      "date": "2026-08-10",
+      "amount": 8500
+     }
+    ]
+   }
+  ],
+  "recurringExpenses": [
+   {
+    "id": "rec1",
+    "name": "Aluguel",
+    "categoryId": "cat2",
+    "value": 1800,
+    "due": 10,
+    "startMonth": "Janeiro"
+   },
+   {
+    "id": "rec2",
+    "name": "Internet",
+    "categoryId": "cat2",
+    "value": 129.9,
+    "due": 20,
+    "startMonth": "Janeiro"
+   }
+  ],
+  "patrimonioGoal": 45000
+ },
+ "appSettings": {
+  "whatsappContacts": [
+   {
+    "id": "wa_demo1",
+    "name": "Contato de teste",
+    "number": "5585999990000"
+   }
+  ],
+  "notificacoes": {
+   "mesesQuitadosAvisados": [
+    "Setembro/2026"
+   ]
+  },
+  "cards": [
+   {
+    "id": "card_nubank",
+    "name": "Nubank",
+    "limit": 8000,
+    "closingDay": 25,
+    "dueDay": 10
+   },
+   {
+    "id": "card_amazon",
+    "name": "Amazon",
+    "limit": 3000,
+    "closingDay": 18,
+    "dueDay": 28
+   }
+  ],
+  "installmentPlans": [
+   {
+    "id": "plan1",
+    "cardId": "card_nubank",
+    "description": "Notebook",
+    "installmentValue": 420,
+    "totalInstallments": 10,
+    "firstMonth": "Março",
+    "firstYear": "2026",
+    "purchaseDate": "2026-02-20"
+   },
+   {
+    "id": "plan2",
+    "cardId": "card_nubank",
+    "description": "Geladeira",
+    "installmentValue": 310.5,
+    "totalInstallments": 12,
+    "firstMonth": "Setembro",
+    "firstYear": "2026",
+    "purchaseDate": "2026-08-15"
+   },
+   {
+    "id": "plan3",
+    "cardId": "card_amazon",
+    "description": "Cadeira de escritório",
+    "installmentValue": 189.9,
+    "totalInstallments": 6,
+    "firstMonth": "Outubro",
+    "firstYear": "2026",
+    "purchaseDate": "2026-09-20"
+   }
+  ]
+ }
+}
